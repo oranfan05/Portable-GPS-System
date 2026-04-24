@@ -2,12 +2,12 @@
 
 A MicroPython-based project that parses real-time satellite data to display navigation information on an SH1106 OLED screen. The system features a multi-page interactive interface controlled by physical buttons.
 
-## 📂 Project Structure
+##Project Structure
 
-- **`main.py`**: The central application logic. [cite_start]It manages UART serial communication with the GPS module, processes NMEA sentences, handles button-based navigation, and coordinates the display[cite: 1, 4].
-- **`sh1106.py`**: The dedicated display driver. [cite_start]It provides the `SH1106_I2C` class, using a frame buffer to draw text and graphics to the 128x64 OLED screen via the I2C protocol[cite: 2, 3].
+ **`main.py`**: The central application logic. [cite_start]It manages UART serial communication with the GPS module, processes NMEA sentences, handles button-based navigation, and coordinates the display[cite: 1, 4].
+ **`sh1106.py`**: The dedicated display driver. [cite_start]It provides the `SH1106_I2C` class, using a frame buffer to draw text and graphics to the 128x64 OLED screen via the I2C protocol[cite: 2, 3].
 
-## 🛠️ Hardware Configuration
+## Hardware Configuration
 
 ### Wiring Diagram
 - [cite_start]**GPS Module (UART):** Connected via `UART 1` at 9600 baud.
@@ -20,7 +20,7 @@ A MicroPython-based project that parses real-time satellite data to display navi
   - [cite_start]**Button A (Pin 14):** Changes main pages and sub-pages[cite: 1, 4].
   - [cite_start]**Button B (Pin 15):** Enters and exits detailed sub-pages.
 
-## 🛰️ Software Features
+## Software Configuration
 
 ### Multi-Page User Interface
 [cite_start]The system organizes information into 5 main pages, with specialized sub-pages for deeper data analysis:
@@ -40,7 +40,7 @@ A MicroPython-based project that parses real-time satellite data to display navi
 - [cite_start]**FrameBuffer Support:** Inherits from MicroPython's `framebuf` for efficient drawing[cite: 2].
 - [cite_start]**Optimized Refresh:** The `show()` method updates the physical display page by page to ensure smooth performance on low-power microcontrollers[cite: 3].
 
-## 🚀 Getting Started
+## Getting Started
 1. Install MicroPython on your microcontroller (e.g., Raspberry Pi Pico).
 2. Upload `sh1106.py` to your board's root directory.
 3. Upload `main.py` and run it to initialize the system.
