@@ -45,3 +45,4 @@ A MicroPython-based project that parses real-time satellite data to display navi
 2. Upload `sh1106.py` to your board's root directory.
 3. Upload `main.py` and run it to initialize the system.
 4. Ensure your GPS module has a clear view of the sky to acquire a "Fix."
+
