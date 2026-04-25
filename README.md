@@ -30,16 +30,17 @@ The system organizes information into 5 main pages, with specialized sub-pages f
 4. Time: Displays current UTC time adjusted to a specific offset.
 5. Speed: Real-time ground speed tracking in km/h.
 
-Advanced GPS Parsing:
+"Advanced GPS Parsing"
+
 - GGA Parsing: Specifically extracts altitude and the number of satellites used for the current fix.
 - RMC Parsing: Retrieves Latitude, Longitude, ground speed (knots converted to km/h), and UTC time.
 - GSV Parsing: Identifies individual satellites in view, their PRN IDs, and Signal-to-Noise Ratio (SNR) for signal quality monitoring.
 
-Display Performance (sh1106.py)
+"Display Performance" (sh1106.py)
 - FrameBuffer Support: Inherits from MicroPython's framebuffer for efficient drawing.
 - Optimized Refresh: The show() method updates the physical display page by page to ensure smooth performance on low-power microcontrollers.
 
-Getting Started
+"Getting Started"
 1. Install MicroPython on your microcontroller (e.g., Raspberry Pi Pico).
 2. Upload sh1106.py to your board's root directory.
 3. Upload main.py and run it to initialize the system.
