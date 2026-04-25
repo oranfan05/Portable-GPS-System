@@ -1,4 +1,4 @@
-# Portable GNSS Navigation System
+# Portable GNSS Navigation System 
 
 A MicroPython-based project that parses real-time satellite data to display navigation information on an SH1106 OLED screen. The system features a multi-page interactive interface controlled by physical buttons.
 
