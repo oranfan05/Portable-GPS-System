@@ -55,6 +55,7 @@ Display Pages:
 5. Speed: Displays real-time ground speed in km/h.
 
 
+
 “Technical Features”
 
 Message Format: Processes NMEA 0183 standard sentences (GGA, RMC, and GSV).
