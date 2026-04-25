@@ -8,17 +8,23 @@ The system is built on a MicroPython-compatible microcontroller (such as a Raspb
 
 GNSS Module (UART):
 Uses UART 1 at 9600 baud.
+
 TX: Pin 4
+
 RX: Pin 5
 
 OLED Display (I2C): Uses I2C 0 at address 0x3C.
 
 SDA: Pin 0     SCL: Pin 1
 
-User Interface Buttons: Configured with internal pull-up resistors.
+User Interface Buttons: 
+Configured with internal pull-up resistors.
 
 Button A (Main Navigation): Pin 14, Blue Button 
+
 Button B (Sub-page Navigation): Pin 15, Red Button 
+
+
 
 
 “Dependencies and Libraries”
@@ -43,8 +49,11 @@ Standard Libraries: machine, time, and framebuf (these are built-in to MicroPyth
 
 Once the system is running, you can interact with the data using the hardware buttons:
 
+
 Button Control: 
+
 Button A (blue): Use this to cycle through the 5 Main Pages (Lat/Lon, Altitude, Satellites, Time, Speed).
+
 Button B (red): Use this to Enter or Exit sub-pages for more detailed data.
 
 Display Pages:
