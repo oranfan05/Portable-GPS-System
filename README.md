@@ -13,7 +13,7 @@ RX: Pin 5
 
 OLED Display (I2C): Uses I2C 0 at address 0x3C.
 
-SDA:  Pin 0
+SDA: Pin 0
 SCL: Pin 1
 
 User Interface Buttons: Configured with internal pull-up resistors.
