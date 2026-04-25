@@ -41,6 +41,7 @@ Standard Libraries: machine, time, and framebuf (these are built-in to MicroPyth
 
 
 “How to Use”
+
 Once the system is running, you can interact with the data using the hardware buttons:
 
 Button Control: 
@@ -56,6 +57,7 @@ Display Pages:
 
 
 “Technical Features”
+
 Message Format: Processes NMEA 0183 standard sentences (GGA, RMC, and GSV).
 Timing & Sync: The UI refreshes every 16ms (~60 FPS) using non-blocking time.ticks_ms logic.
 Error Handling: Includes robust protection against serial noise (UnicodeDecodeError) and malformed data packets (ValueError, IndexError) to ensure the system does not crash during signal loss.
