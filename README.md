@@ -7,6 +7,7 @@ main.py: The central application logic. It manages UART serial communication wit
 sh1106.py: The dedicated display driver. It provides the SH1106_I2C class, using a frame buffer to draw text and graphics to the 128x64 OLED screen via the I2C protocol.
 
 Hardware Configuration:
+
 Wiring Diagram:
 - GPS Module (UART): Connected via UART 1 at 9600 baud.
   - TX: Pin 4
