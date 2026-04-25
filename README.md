@@ -1,47 +1,61 @@
-# Portable GNSS Navigation System 
+“”Portable GNSS Navigation System””
 
-A MicroPython-based project that parses real-time satellite data to display navigation information on an SH1106 OLED screen. The system features a multi-page interactive interface controlled by physical buttons.
+A MicroPython-based project that parses real-time satellite data to display navigation information on an SH1106 OLED screen. The system provides a multi-page interactive interface for geospatial tracking.
 
-Project Structure:
-main.py: The central application logic. It manages UART serial communication with the GPS module, processes NMEA sentences, handles button-based navigation, and coordinates the display.
-sh1106.py: The dedicated display driver. It provides the SH1106_I2C class, using a frame buffer to draw text and graphics to the 128x64 OLED screen via the I2C protocol.
+“Hardware Setup Instructions”
 
-"Hardware Configuration"
+The system is built on a MicroPython-compatible microcontroller (such as a Raspberry Pi Pico) using the following pinout:
 
-Wiring Diagram:
-- GPS Module (UART): Connected via UART 1 at 9600 baud.
-  - TX: Pin 4
-  - RX: Pin 5
-- OLED Display (I2C): Connected via I2C 0.
-  - SDA: Pin 0
-  - SCL: Pin 1
-- User Buttons: Using internal pull-up resistors.
-  - Button A (Pin 14): Changes main pages and sub-pages.
-  - Button B (Pin 15): Enters and exits detailed sub-pages.
+GNSS Module (UART):
+Uses UART 1 at 9600 baud.
+TX: Pin 4
+RX: Pin 5
 
-"Software Configuration"
+OLED Display (I2C): Uses I2C 0 at address 0x3C.
 
-Multi-Page User Interface:
-The system organizes information into 5 main pages, with specialized sub-pages for deeper data analysis.
+SDA:  Pin 0
+SCL: Pin 1
 
-1. LAT/LON: Real-time coordinates with sub-pages for Degree-Minute-Second conversion, Continent detection, and Hemisphere identification.
-2. Altitude: Elevation in meters, with sub-pages for feet conversion and a percentage comparison to Mt. Everest.
-3. Satellites: Active satellite count, with sub-pages for PRN IDs, constellation breakdown (GPS/Galileo/GLONASS), and a 4-bar SNR signal strength indicator.
-4. Time: Displays current UTC time adjusted to a specific offset.
-5. Speed: Real-time ground speed tracking in km/h.
+User Interface Buttons: Configured with internal pull-up resistors.
 
-"Advanced GPS Parsing"
+Button A (Main Navigation): Pin 14, Blue Button 
+Button B (Sub-page Navigation): Pin 15, Red Button 
 
-- GGA Parsing: Specifically extracts altitude and the number of satellites used for the current fix.
-- RMC Parsing: Retrieves Latitude, Longitude, ground speed (knots converted to km/h), and UTC time.
-- GSV Parsing: Identifies individual satellites in view, their PRN IDs, and Signal-to-Noise Ratio (SNR) for signal quality monitoring.
 
-"Display Performance" (sh1106.py)
-- FrameBuffer Support: Inherits from MicroPython's framebuffer for efficient drawing.
-- Optimized Refresh: The show() method updates the physical display page by page to ensure smooth performance on low-power microcontrollers.
+“Dependencies and Libraries”
 
-"Getting Started"
-1. Install MicroPython on your microcontroller (e.g., Raspberry Pi Pico).
-2. Upload sh1106.py to your board's root directory.
-3. Upload main.py and run it to initialize the system.
-4. Ensure your GPS module has a clear view of the sky to acquire a "Fix."
+The project requires the following files and libraries to be present on the microcontroller:
+
+Standard Libraries: machine, time, and framebuf (these are built-in to MicroPython firmware).
+“sh1106.py”: The dedicated hardware driver for the 128x64 OLED screen.
+‘main.py”: The application logic and GPS parsing script.
+
+
+“Build and Run Instructions”
+
+1. Prepare Hardware: Wire the components according to the Hardware Setup section above.
+2. Flash Firmware: Ensure your board has the latest MicroPython firmware installed.
+3. Upload Files: Use an IDE like Thonny to upload both `sh1106.py` and `main.py` to the root directory of your device.
+4. Execute: Run “main.py”. The display will initialize with a "GNSS" header.
+5. Acquire Fix: Ensure the GPS module has a clear view of the sky to begin receiving data.
+
+
+“How to Use”
+Once the system is running, you can interact with the data using the hardware buttons:
+
+Button Control: 
+Button A (blue): Use this to cycle through the 5 Main Pages (Lat/Lon, Altitude, Satellites, Time, Speed).
+Button B (red): Use this to Enter or Exit sub-pages for more detailed data.
+
+Display Pages:
+1. Latitude/Longitude: Shows decimal coordinates. Sub-pages include DMS (Degrees, Minutes, Seconds) and Continent detection.
+2. Altitude: Displays elevation in meters. Sub-pages show conversion to feet and a height comparison to Mt. Everest.
+3. Satellites: Shows total satellites in use. Sub-pages list PRN IDs, identify constellations (GPS/Galileo/GLONASS), and show Signal Strength bars.
+4. Time: Displays current UTC time adjusted for local offset.
+5. Speed: Displays real-time ground speed in km/h.
+
+
+“Technical Features”
+Message Format: Processes NMEA 0183 standard sentences (GGA, RMC, and GSV).
+Timing & Sync: The UI refreshes every 16ms (~60 FPS) using non-blocking time.ticks_ms logic.
+Error Handling: Includes robust protection against serial noise (UnicodeDecodeError) and malformed data packets (ValueError, IndexError) to ensure the system does not crash during signal loss.
