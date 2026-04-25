@@ -32,8 +32,10 @@ Button B (Sub-page Navigation): Pin 15, Red Button
 The project requires the following files and libraries to be present on the microcontroller:
 
 Standard Libraries: machine, time, and framebuf (these are built-in to MicroPython firmware).
+
 “sh1106.py”: The dedicated hardware driver for the 128x64 OLED screen.
-‘main.py”: The application logic and GPS parsing script.
+
+"main.py”: The application logic and GPS parsing script.
 
 
 “Build and Run Instructions”
