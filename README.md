@@ -40,7 +40,7 @@ Standard Libraries: machine, time, and framebuf (these are built-in to MicroPyth
 
 1. Prepare Hardware: Wire the components according to the Hardware Setup section above.
 2. Flash Firmware: Ensure your board has the latest MicroPython firmware installed.
-3. Upload Files: Use an IDE like Thonny to upload both `sh1106.py` and `main.py` to the root directory of your device.
+3. Upload Files: Use an IDE like Thonny to upload both "sh1106.py" and "main.py" to the root directory of your device.
 4. Execute: Run “main.py”. The display will initialize with a "GNSS" header.
 5. Acquire Fix: Ensure the GPS module has a clear view of the sky to begin receiving data.
 
